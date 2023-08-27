@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="./styles.css">
+    
+</head>
+<body>
+    <div class="container">
+        <form onsubmit="sendEmail(); reset(); return false;">
+            <marquee><h3>STUDENT SURVEY FORM</h3></marquee>
+            <input type="text"  id="fname" required placeholder="First Name">
+            <input type="text"  id="lname"  placeholder="Last Name">
+            <input type="email" id="email"  placeholder="Email">
+            <input type="text"  id="phno"  placeholder="Mobile Number">
+            <input type="date"  id="dob" placeholder="DOB">
+            <input type="text"  id="stream" placeholder="BTECH Stream">
+            <input type="number"id="pass" placeholder="Year of Graduation">
+            <input type="text"  id="languages" placeholder="Programming Languages">
+            <input type="text"  id="technologies" placeholder="Technologies Interested/Known">
+            <input type="text"  id="certifications" placeholder="Certifications">
+            <input type="text"  id="hobby" placeholder="Hobbies"> 
+            <input type="text"  id="codingWebsites" placeholder="List your leetcode/HackerRank/CodeChef profile urls">
+            <textarea  id="message" rows="3" placeholder="Any Queries?"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+              function sendEmail(){
+                Email.send({
+                    Host     : "smtp.elasticemail.com",
+                    Username : "venki.c1223@smtp.com",
+                    Password : "E5F0D046807868F48538DD2342AFAB67CAE6",
+                    To       : "chapalamaduguvenkatesh2002@gmail.com",
+                    From     : document.getElementById("email").value,
+                    Subject  : "Survey Form",
+                    Body     :  "Name : " + document.getElementById("fname").value +
+                                       document.getElementById("lname").value +
+                                "<br>Email : " + document.getElementById("email").value +
+                                "<br>Mobile NO : " + document.getElementById("phno").value +
+                                "<br>DOB : " + document.getElementById("dob").value +
+                                "<br>BTECH Stream : " + document.getElementById("stream").value +
+                                "<br>Year of Graduation : " + document.getElementById("pass").value +
+                                "<br>Programming Languages : " + document.getElementById("languages").value +
+                                "<br>Technologies : " + document.getElementById("technologies").value +
+                                "<br>Certifications : " + document.getElementById("certifications").value +
+                                "<br>Hobbies : " + document.getElementById("hobby").value +
+                                "<br>Coding Websites Urls : " + document.getElementById("codingWebsites").value +
+                                "<br>Messase : " + document.getElementById("message").value 
+                            
+                            }).then(
+                                       message => alert("Survey form submitted")
+                                   );
+                       }
+    </script>
+</body>
+</html>
